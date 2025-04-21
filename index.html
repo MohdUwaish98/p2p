@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>P2P File Transfer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>P2P File Transfer</h1>
+    
+    <div class="room-controls">
+      <div class="create-room">
+        <button id="createRoomBtn">Create Room</button>
+        <div id="roomIdDisplay" class="room-id-display hidden">
+          <span>Room ID: </span>
+          <span id="roomId"></span>
+          <button id="copyRoomId">Copy</button>
+        </div>
+      </div>
+      
+      <div class="join-room">
+        <input type="text" id="joinRoomInput" placeholder="Enter Room ID">
+        <button id="joinRoomBtn">Join Room</button>
+      </div>
+    </div>
+    
+    <div id="connectionStatus" class="status">Disconnected</div>
+    
+    <div id="fileTransfer" class="file-transfer hidden">
+      <div class="file-controls">
+        <input type="file" id="fileInput">
+        <button id="sendFileBtn" disabled>Send</button>
+      </div>
+      
+      <div class="progress-container">
+        <div class="progress-section">
+          <label>Sending:</label>
+          <div class="progress-bar-container">
+            <div id="senderProgress" class="progress-bar"></div>
+          </div>
+          <span id="senderProgressText">0%</span>
+        </div>
+        
+        <div class="progress-section">
+          <label>Receiving:</label>
+          <div class="progress-bar-container">
+            <div id="receiverProgress" class="progress-bar"></div>
+          </div>
+          <span id="receiverProgressText">0%</span>
+        </div>
+      </div>
+      
+      <a id="downloadLink" class="hidden" download="received-file"></a>
+    </div>
+  </div>
+  
+  <script type="module" src="main.js"></script>
+</body>
+</html> 

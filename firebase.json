@@ -1,0 +1,36 @@
+{
+  "database": {
+    "rules": {
+      "rules": {
+        "rooms": {
+          "$roomId": {
+            "signals": {
+              ".read": true,
+              ".write": true,
+              "$signalId": {
+                ".validate": "newData.hasChildren(['from', 'type', 'payload', 'timestamp'])",
+                "from": {
+                  ".validate": "newData.val() === 'peerA' || newData.val() === 'peerB'"
+                },
+                "type": {
+                  ".validate": "newData.val() === 'offer' || newData.val() === 'answer' || newData.val() === 'ice'"
+                },
+                "timestamp": {
+                  ".validate": "newData.isNumber() && newData.val() <= now"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+} 
